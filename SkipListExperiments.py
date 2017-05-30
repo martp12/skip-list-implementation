@@ -114,7 +114,7 @@ def run_sequence_threshold(skiplist, sequence_file):
 
         skiplist.insert(float(line[2]))
         size += 1
-    rebalance(skiplist)
+    skiplist.full_rebalance()
 
     if size == 1000:
         assert(skiplist.head.s / size == 11.149)
@@ -165,7 +165,7 @@ def run_sequence_ratio(skiplist, ratio, sequence_file):
 
         skiplist.insert(float(line[2]))
         size += 1
-    rebalance(skiplist)
+    skiplist.full_rebalance()
     rebalance_interval = int(size * ratio)
 
     # Perform Experiment
@@ -492,17 +492,9 @@ def stable_size_ratio_rebalance_original_gaps(repetitions, sequence_file_name, r
 
 
 if __name__ == "__main__":
-    #run_experiments()
-    #generate_stable_sequence(1000, 10000, 'sequences/stable_1000_8.txt')
-    #stable_size_threshold_rebalancing_original_gaps(10, "sequences/stable_1000_", "junk/stable_1000_10000_threshold.csv")
-    #stable_size_no_rebalancing_original_gaps(1000, 10000, "junk/lol.txt", "junk/lol.csv")
-    #run_sequence('junk/stable_1000_1.txt', 'junk/lol.csv')
-    #stable_size_ratio_rebalance_original_gaps(10, 'junk/stable_1000_', 'junk/stable_1000_10000_ratio.csv')
-
-    #stable_size_no_rebalancing_original_gaps(10, 'sequences/stable_1000_', 'junk/stable_1000_10000_no_rebalance.csv')
-    #stable_size_standard_rebalancing_original_gaps(10, 'sequences/stable_1000_', 'junk/stable_1000_10000_standard_rebalance.csv')
-    stable_size_ratio_rebalance_original_gaps(10, 'sequences/stable_1000_', 'junk/stable_1000_10000_ratio.csv')
-
-    #run_sequence_threshold(SkipList(3, ), 'junk/h.txt0')
-    #stable_size_no_rebalancing_original_gaps(1000, 24000, 'sequences/trash.txt', 'results/trash.csv')
-    #stable_size_no_rebalancing(1000, 1000, 'sequences/trash.txt', 'results/trash.csv')
+    insert_only_no_rebalancing_original_gaps(10, 'sequences/insert_5000_', 'insert_5000_no_rebalance.csv')
+    insert_only_standard_rebalancing_original_gaps(10, 'sequences/insert_5000_', 'insert_5000_standard_rebalance.csv')
+    stable_size_no_rebalancing_original_gaps(10, 'sequences/stable_1000_', 'stable_1000_10000_no_rebalance.csv')
+    stable_size_standard_rebalancing_original_gaps(10, 'sequences/stable_1000_', 'stable_1000_10000_standard_rebalance.csv')
+    stable_size_ratio_rebalance_original_gaps(10, 'sequences/stable_1000_', 'stable_1000_10000_ratio.csv')
+    stable_size_threshold_rebalancing_original_gaps(10, "sequences/stable_1000_", "stable_1000_10000_threshold.csv")
